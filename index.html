@@ -1,12 +1,360 @@
 <!DOCTYPE html>
-<html>
-<head>
-<title>Shulin's Website</title>
-</head>
-<body>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Shulin Cao @ UCSD by sharbie</title>
+    <!-- Meta -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Shulin Cao's Portfolio">
+    <meta name="author" content="Shulin Cao"> 
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <!-- FontAwesome JS-->
+    <script src="plugins/font-awesome/js/fontawesome-all.min.js"></script>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">   
+    <!-- Theme CSS -->  
+    <link id="theme-style" rel="stylesheet" href="css/theme-1.css">
+    <!-- Lightbox -->
+    <link rel="stylesheet" href="plugins/lightbox/simpleLightbox.css">
+  </head>
+  <body>
 
-<h1>Hello Internet!</h1>
-<p>This is a paragraph.</p>
-<script>alert('Random Javascript!');</script>
-</body>
-</html>
+        <header class="header">
+            <div class="top-bar container-fluid">
+                <div class="actions">
+                    <a class="btn d-none d-md-inline-block" href="mailto:shc131@eng.ucsd.edu"><i class="fas fa-paper-plane" aria-hidden="true"></i> Email Me</a>
+                    <a class="btn" href="files/resume_shulin_cao_career_r1.pdf"><i class="fas fa-download" aria-hidden="true"></i> Download My Resume</a>
+                </div><!--//actions-->
+                <ul class="social list-inline">
+                    <li class="list-inline-item"><a href="https://www.linkedin.com/in/lynncho1993/"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
+                    <li class="list-inline-item"><a href="https://github.com/sharbie"><i class="fab fa-github-alt" aria-hidden="true"></i></a></li>
+                </ul><!--//social-->
+            </div><!--//top-bar-->
+            
+            <div class="intro">
+                <div class="container text-center">
+                    <img class="profile-image" src="files/911554099297_.pic.jpg" alt="">
+                    <h1 class="name">Shulin Cao</h1>
+                    <div class="title">Ph.D. Candidate</div>
+                    <div class="profile">
+                        <p >I am currently a Ph.D candidate speciallized in Computational Biology and Bioinformatics from <a href="http://www.be.ucsd.edu/">Department of Bioengineering, <a href="https://ucsd.edu/">UC San Diego</a>. I finished my undergrad at <a href="http://english.hust.edu.cn/">Huazhong University of Science and Technology</a>. </p>
+                    </div><!--//profile-->
+                </div><!--//container-->
+            </div><!--//intro-->
+            
+            <div class="contact-info">
+                <div class="container text-center">
+                    <ul class="list-inline">
+                        <li class="email list-inline-item"><i class="fas fa-envelope"></i><a href="mailto:shc131@eng.ucsd.edu">shc131@eng.ucsd.edu</a></li>
+                        <!-- <li class="list-inline-item"><i class="fas fa-phone"></i> <a href="tel: 0123456789">0123 456 7890</a></li>-->
+                        <li class="website list-inline-item"><i class="fas fa-globe"></i><a href="#" target="_blank">shulincao.com</a></li>
+                    </ul>
+                </div><!--//container-->
+            </div><!--//contact-info-->
+            
+            <div class="page-nav-space-holder d-none d-md-block">
+                <div id="page-nav-wrapper" class="page-nav-wrapper text-center">
+                    <div class="container">
+                        <ul id="page-nav" class="nav page-nav list-inline">
+                            <li class="nav-item"><a class="scrollto nav-link" href="#experiences-section">Experiences</a></li>
+                            <li class="nav-item"><a class="scrollto nav-link" href="#education-section">Education</a></li>
+                            <li class="nav-item"><a class="scrollto nav-link" href="#skills-section">Skills</a></li>
+                        </ul><!--//page-nav-->
+                    </div>
+                </div><!--//page-nav-wrapper-->
+            </div>
+            
+        </header><!--//header-->
+        
+        <div class="wrapper container">
+            <section id="experiences-section" class="experiences-section section">
+                <h2 class="section-title">Work Experiences</h2>
+                <div class="timeline">
+                    <div class="item">
+                        <div class="work-place">
+                            <h3 class="place">CMRG at UC San Diego</h3>
+                            <div class="location"><i class="fas fa-map-marker-alt mr-1"></i>La Jolla, CA</div>
+                        </div>
+                        <div class="job-meta">
+                            <div class="title">Ph.D. Candidate, advised by Prof. Andrew McCulloch</div>
+                            <div class="time">01/2017 - Now</div>
+                        </div><!--//job-meta-->
+                        <div class="job-desc">
+                            <ul>
+                                <li>Constructed a functional gene regulatory network model based on ODE Systems for quantitative description of gene expression using python with multiple optimizations combined.</li>
+                                <li>Implemented clustering methods and graph models joint with Gene Ontology analysis API and NetworkX for detecting gene regulation mechanisms.</li>
+                                <li>Performed data analysis based on the RNA Sequencing data and PCR data and completed bioinformatics pathways analysis by comparing model with data and predicted hidden pathways using methods of Link Prediction of Network. (This work is under submission.)</li>
+                            </ul>
+                        </div><!--//job-desc-->
+                    </div><!--//item-->
+                    
+                    <div class="item">
+                        <div class="work-place">
+                            <h3 class="place">Novartis Institutes for Biomedical Research (Biostatistics Case: A Drop Everything Situation)</h3>
+                            <div class="location"><i class="fas fa-map-marker-alt mr-1"></i>Cambridge, MA</div>
+                        </div>
+                        <div class="job-meta">
+                            <div class="title">Visiting Student, advised by Dr. Brian Smith</div>
+                            <div class="time">08/2018</div>
+                        </div><!--//job-meta-->
+                        <div class="job-desc">
+                            <ul>
+                                <li>Processed a clinical trial placebo dataset aiming at diabetes with more than 8k observations and 15 features and a test dataset with 48 observations.</li>
+                                <li>Implemented several methods including logistic regression, multivariate regression, SVM and KNN in classifying key factors influencing body ALT values responding to the drug.</li>
+                                <li>Concluded dosing effect and pharmacodynamical effects of the drug are the main features affecting patients’ physiological response and potential side effects and made corresponding suggestions.</li>
+                            </ul>
+                        </div><!--//job-desc-->
+                    </div><!--//item-->
+                    
+                    <div class="item">
+                        <div class="work-place">
+                            <h3 class="place">Selected Project I: NLP Application in Predicting Psychological Health from Childhood Essays</h3>
+                            <div class="location"><i class="fas fa-map-marker-alt mr-1"></i>La Jolla, CA</div>
+                        </div>
+                        <div class="job-meta">
+                            <div class="time">04/2018 - 06/2018</div>
+                        </div><!--//job-meta-->
+                        <div class="job-desc">
+                            <ul>
+                                <li>Cleaned and processed clinical notes data using implemented language model and error model for spelling corrector and also collected features using bag-of-word and embedded word2vec algorithms.</li>
+                                <li>Implemented three main methods, KNN using counts, logistic regression using TF-IDF, single-layer neural network/adaboost/random forest using word2vec to train the data respectively.</li>
+                                <li>Measured the models’ performances by comparing several statistical indicators such as F1 score, precision and ROC curve to determine the best model that can be utilized in predictions of psychological diseases from early stage resources.</li>
+                            </ul>
+                        </div><!--//job-desc-->
+                    </div><!--//item-->
+                    
+                  <div class="item">
+                        <div class="work-place">
+                            <h3 class="place">Selected Project II: E-commercial Recommendation Systems Based on Link Analysis</h3>
+                            <div class="location"><i class="fas fa-map-marker-alt mr-1"></i>La Jolla, CA</div>
+                        </div>
+                        <div class="job-meta">
+                            <div class="time">04/2017 - 06/2017</div>
+                        </div><!--//job-meta-->
+                        <div class="job-desc">
+                            <ul>
+                                <li>Implemented a machine learning algorithm which can calculate similarity based attributes of nodes and several other network features based on link prediction using graph mining methodology on the dataset of Amazon product co-purchasing network metadata for product recommendation.</li>
+                                <li>Compared the performance of product and customer similarity graphs and the accuracy of different algorithms and explore in detail the attributes and network properties of Amazon product co-purchasing network dataset.
+</li>
+                            </ul>
+                        </div><!--//job-desc-->
+                    </div><!--//item-->  
+                  
+                </div><!--//timeline-->
+                
+            </section><!--//section-->
+
+            <section id="education-section" class="education-section section">
+                <h2 class="section-title">Education</h2>
+                <div class="row">
+                    <div class="item col-12 col-md-4">
+                        <div class="item-inner">
+                            <h3 class="degree">MSc Computer Science</h3>
+                            <div class="education-body">
+                                <a href="https://ucsd.edu/">UC San Diego</a>
+                            </div><!--//education-body-->
+                            <div class="time">2017 - 2020(Expected)</div>
+                            <div class="desc">
+                                <ul>
+                                    <li>Ph.D. Candidate </li>
+                                </ul>
+                            </div>
+                        </div><!--//item-inner-->
+                    </div><!--//item-->
+                    <div class="item col-12 col-md-4">
+                        <div class="item-inner">
+                            <h3 class="degree">Bachelor of Science</h3>
+                            <div class="education-body">
+                                <a href="http://english.hust.edu.cn/">Huazhong University of Science and Technology</a>
+                            </div><!--//education-body-->
+                            <div class="time">2011 - 2015</div>
+                            <div class="desc">
+                                <ul>
+                                    <li>Nationaly Endeavor Scholarship (13/343)</li>
+                                </ul>
+                            </div>
+                        </div><!--//item-inner-->
+                    </div><!--//item-->
+                    
+                </div><!--//row-->
+            </section><!--//section-->
+            
+            
+            <section id="skills-section" class="skills-section section text-center">
+                <h2 class="section-title">Professional Skills</h2>
+                <div class="top-skills">
+                    <h3 class="subtitle">Top Skills</h3>
+                    <div class="row">
+                        <div class="item col-12 col-md-4">
+                            <div class="item-inner">
+                                <div class="chart-easy-pie text-center">
+                                    <div class="chart-theme-1 chart" data-percent="95"><span>95</span>%</div>
+                                </div>
+                                <h4 class="skill-name">Python</h4>
+                                <div class="level">Advanced, 4 years</div>
+                                <div class="desc">
+                                    <p>
+                                        <a href="https://wl11gp.neu.edu/udcprod8/bwckctlg.p_disp_course_detail?cat_term_in=201930&subj_code_in=CS&crse_numb_in=5001#_ga=2.224590354.901188050.1548721606-1166941903.1509937140">CS 5001</a> – Intensive Foundations of Computer Science (TA)
+                                        <br>
+                                        <a href="https://wl11gp.neu.edu/udcprod8/bwckctlg.p_disp_course_detail?cat_term_in=201930&subj_code_in=CS&crse_numb_in=5100#_ga=2.254007808.901188050.1548721606-1166941903.1509937140">CS 5100</a> – Foundations of Artificial Intelligence</p>
+                                    </div>
+                                </div><!--//item-inner-->
+                            </div><!--//item-->
+                            <div class="item col-12 col-md-4">
+                                <div class="item-inner">
+                                    <div class="chart-easy-pie text-center">
+                                        <div class="chart-theme-1 chart" data-percent="90"><span>90</span>%</div>
+                                    </div>
+                                    <h4 class="skill-name">R</h4>
+                                    <div class="level">Advanced, 3 years</div>
+                                    <div class="desc">
+                                        <p>
+                                            <a href="https://wl11gp.neu.edu/udcprod8/bwckctlg.p_disp_course_detail?cat_term_in=201930&subj_code_in=CS&crse_numb_in=5010#_ga=2.262470532.901188050.1548721606-1166941903.1509937140">CS 5010</a> – Programming Design Paradigm
+                                            <br>
+                                            <a href="https://wl11gp.neu.edu/udcprod8/bwckctlg.p_disp_course_detail?cat_term_in=201930&subj_code_in=CS&crse_numb_in=5200#_ga=2.262470532.901188050.1548721606-1166941903.1509937140">CS 5200</a> – Database Management Systems
+                                            <br>
+                                            <a href="https://wl11gp.neu.edu/udcprod8/bwckctlg.p_disp_course_detail?cat_term_in=201930&subj_code_in=CS&crse_numb_in=5800#_ga=2.266533638.901188050.1548721606-1166941903.1509937140">CS 5800</a> – Algorithms (TA)
+                                            <br>
+                                            <a href="https://wl11gp.neu.edu/udcprod8/bwckctlg.p_disp_course_detail?cat_term_in=201930&subj_code_in=CS&crse_numb_in=6650#_ga=2.199638566.901188050.1548721606-1166941903.1509937140">CS 6650</a> – Building Scalable Distributed Systems
+                                        </p> 
+                                    </div>
+                                </div><!--//item-inner-->
+                            </div><!--//item-->
+                            <div class="item col-12 col-md-4">
+                                <div class="item-inner">
+                                    <div class="chart-easy-pie text-center">
+                                        <div class="chart-theme-1 chart" data-percent="85"><span>85</span>%</div>
+                                    </div>
+                                    <h4 class="skill-name">Machine Learning and Statistical Modeling</h4>
+                                    <div class="level">Advanced, 3 years</div>
+                                    <div class="desc">
+                                        <p>
+                                            <a href="https://wl11gp.neu.edu/udcprod8/bwckctlg.p_disp_course_detail?cat_term_in=201930&subj_code_in=CS&crse_numb_in=5600#_ga=2.187359008.901188050.1548721606-1166941903.1509937140">CS 5600</a> – Computer Systems
+                                            <br>
+                                            <a href="https://wl11gp.neu.edu/udcprod8/bwckctlg.p_disp_course_detail?cat_term_in=201930&subj_code_in=CS&crse_numb_in=5800#_ga=2.266533638.901188050.1548721606-1166941903.1509937140">CS 5800</a> – Algorithms
+                                        </p>
+                                    </div>
+                                </div><!--//item-inner-->
+                            </div><!--//item-->
+                            <div class="item col-12 col-md-4">
+                                <div class="item-inner">
+                                    <div class="chart-easy-pie text-center">
+                                        <div class="chart-theme-1 chart" data-percent="85"><span>85</span>%</div>
+                                    </div>
+                                    <h4 class="skill-name">C/C++</h4>
+                                    <div class="level">Advanced, 3 years</div>
+                                    <div class="desc">
+                                        <p>
+                                            <a href="https://wl11gp.neu.edu/udcprod8/bwckctlg.p_disp_course_detail?cat_term_in=201930&subj_code_in=CS&crse_numb_in=5600#_ga=2.187359008.901188050.1548721606-1166941903.1509937140">CS 5600</a> – Computer Systems
+                                            <br>
+                                            <a href="https://wl11gp.neu.edu/udcprod8/bwckctlg.p_disp_course_detail?cat_term_in=201930&subj_code_in=CS&crse_numb_in=5800#_ga=2.266533638.901188050.1548721606-1166941903.1509937140">CS 5800</a> – Algorithms
+                                        </p>
+                                    </div>
+                                </div><!--//item-inner-->
+                            </div><!--//item-->
+                        </div><!--//row-->
+                    </div><!--//top-skills-->
+
+                    <div class="other-skills">
+                        <h3 class="subtitle">Other Skills</h3>
+                        <div class="misc-skills">
+                            <span class="skill-tag">CSS</span>
+                            <span class="skill-tag">HTML5</span>
+                            <span class="skill-tag">Github</span>
+                            <span class="skill-tag">Matlab</span>
+                            <span class="skill-tag">openMP</span>
+                            <span class="skill-tag">LaTeX</span>
+                            <br>
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">Survival Analysis</span>
+                            <span class="skill-tag">Mandarin</span>
+                        </div>
+                    </div><!--//other-skills-->
+
+                </section><!--//skills-section-->
+                
+                
+
+            <section id="contact-section" class="contact-section section">
+                <h2 class="section-title">Get in Touch</h2>
+                <div class="intro">
+                    <img class="profile-image" src="files/911554099297_.pic.jpg" alt="">
+                    <div class="dialog">
+                        <p>I will be joining Facebook as Machine Learning Intern for 2019 summer. As expected to graduate for summer 2020, I'm also open to any future full time positions.</p>
+                        <p><strong>I can help with the following:</strong></p>
+                        <ul class="list-unstyled service-list">
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Machine Learning and Data Analysis</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Biostatistical Analysis for Clinical Data</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Bioinformatics Algorithm Development</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Imaging Process for Diagnosis of Diseases</li>
+                        </ul>
+                        <p>Drop me a line at <a href="shc131@eng.ucsd.edu">shc131@eng.ucsd.edu</a>.</p>
+                        <ul class="social list-inline">
+                            <li class="list-inline-item"><a href="https://www.linkedin.com/in/lynncho1993/"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
+                            <li class="list-inline-item"><a href="https://github.com/sharbie"><i class="fab fa-github-alt" aria-hidden="true"></i></a></li>
+                        </ul><!--//social-->
+                    </div><!--//diaplog-->
+                </div><!--//intro-->
+
+            </section><!--//section-->
+
+        </div><!--//wrapper-->
+
+        <footer class="footer text-center">
+            <div class="container">
+                <small class="copyright">Shulin Cao</small>
+            </div><!--//container-->
+        </footer>
+
+        <!-- *****CONFIGURE STYLE****** -->  
+        <div id="config-panel" class="config-panel d-none d-lg-block">
+            <div class="panel-inner">
+                <a id="config-trigger" class="config-trigger config-panel-hide" href="#"><i class="fas fa-cog mx-auto"></i></a>
+                <h5 class="panel-title">Choose Color</h5>
+                <ul id="color-options" class="list-unstyled list-inline">
+                    <li class="theme-1 active list-inline-item"><a data-style="css/theme-1.css" data-chart="#FF9800" href="#"></a></li>
+                    <li class="theme-2  list-inline-item"><a data-style="css/theme-2.css" data-chart="#FFC107" href="#"></a></li>
+                    <li class="theme-3  list-inline-item"><a data-style="css/theme-3.css" data-chart="#C0CA33" href="#"></a></li>
+                    <li class="theme-4  list-inline-item"><a data-style="css/theme-4.css" data-chart="#8BC34A" href="#"></a></li>
+                    <li class="theme-5  list-inline-item"><a data-style="css/theme-5.css" data-chart="#4CAF50" href="#"></a></li>
+                    <li class="theme-6  list-inline-item"><a data-style="css/theme-6.css" data-chart="#009688" href="#"></a></li>
+                    <li class="theme-7  list-inline-item"><a data-style="css/theme-7.css" data-chart="#03A9F4" href="#"></a></li>
+                    <li class="theme-8  list-inline-item"><a data-style="css/theme-8.css" data-chart="#00BCD4" href="#"></a></li>
+                    <li class="theme-9  list-inline-item"><a data-style="css/theme-9.css" data-chart="#FF5722" href="#"></a></li>
+                    <li class="theme-10  list-inline-item"><a data-style="css/theme-10.css" data-chart="#795548" href="#"></a></li>
+                    <li class="theme-11  list-inline-item"><a data-style="css/theme-11.css" data-chart="#607D8B" href="#"></a></li>
+                    <li class="theme-12  list-inline-item"><a data-style="css/theme-12.css" data-chart="#673AB7" href="#"></a></li>
+                    <li class="theme-13  list-inline-item"><a data-style="css/theme-13.css" data-chart="#3F51B5" href="#"></a></li>
+                    <li class="theme-14  list-inline-item"><a data-style="css/theme-14.css" data-chart="#2196F3" href="#"></a></li>
+                    <li class="theme-15  list-inline-item"><a data-style="css/theme-15.css" data-chart="#9C27B0" href="#"></a></li>
+                    <li class="theme-16  list-inline-item"><a data-style="css/theme-16.css" data-chart="#E91E63" href="#"></a></li>
+                </ul>
+                <a id="config-close" class="close" href="#"><i class="fas fa-times-circle"></i></a>
+            </div><!--//panel-inner-->
+        </div><!--//configure-panel-->
+
+        <!-- Javascript -->          
+        <script src="plugins/jquery-3.3.1.min.js"></script>
+        <script src="plugins/popper.min.js"></script> 
+        <script src="plugins/bootstrap/js/bootstrap.min.js"></script>  
+        <script src="plugins/back-to-top.js"></script>
+        <script src="plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script> 
+        <script src="plugins/easy-pie-chart/dist/jquery.easypiechart.min.js"></script>
+        <script src="plugins/imagesloaded.pkgd.min.js"></script> 
+        <script src="plugins/isotope.pkgd.min.js"></script>  
+        <script src="plugins/jquery.easing.1.3.js"></script> 
+        <script src="plugins/lightbox/simpleLightbox.min.js"></script>
+
+        <!-- custom js -->
+        <script src="js/main.js"></script>
+
+        <!-- Style Switcher (REMOVE ON YOUR PRODUCTION SITE) -->
+        <script src="js/demo/style-switcher.js"></script>     
+
+
+    </body>
+    </html> 
+    
