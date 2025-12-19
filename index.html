@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shulin Cao | A Journey of Exploration</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #fafafa; color: #1a1a1a; transition: background-color 0.3s, color 0.3s; overflow: hidden; }
         .dark body { background-color: #121212; }
         
-        /* Landing Page Animations */
+        /* Smooth Landing Transition */
         #landing-page { transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.6s ease; }
         .content-visible { overflow-y: auto !important; }
         .fade-out { transform: translateY(-100%); opacity: 0; pointer-events: none; }
         
-        /* General Styles */
+        /* UI Components */
         .timeline-line { width: 1px; background: #e5e7eb; }
         .card-hover { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: grab; user-select: none; }
         .card-hover:active { cursor: grabbing; }
@@ -25,11 +25,15 @@
         .active-tab { color: #3b82f6 !important; font-weight: 700; }
         .clickable-img { cursor: zoom-in; }
 
-        /* Floating Animation for Hint */
-        @keyframes bounce-subtle {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+        /* Animation: Centered Scroll Hint */
+        @keyframes scroll-line {
+            0% { transform: scaleY(0); transform-origin: top; }
+            50% { transform: scaleY(1); transform-origin: top; }
+            51% { transform: scaleY(1); transform-origin: bottom; }
+            100% { transform: scaleY(0); transform-origin: bottom; }
         }
+        .scroll-indicator { animation: scroll-line 2s infinite cubic-bezier(0.65, 0, 0.35, 1); }
+        @keyframes bounce-subtle { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
         .animate-hint { animation: bounce-subtle 2s infinite ease-in-out; }
     </style>
     <script> tailwind.config = { darkMode: 'class' } </script>
@@ -38,19 +42,18 @@
 
     <div id="landing-page" class="fixed inset-0 z-[200] flex flex-col items-center justify-center bg-black overflow-hidden text-center">
         <img src="files/main3.jpg" alt="Background" class="absolute inset-0 w-full h-full object-cover opacity-60">
-        <div class="relative z-10 flex flex-col items-center justify-center w-full px-6 md:px-12">
-            <h1 class="text-white text-5xl md:text-7xl font-bold tracking-tighter mb-8 text-center select-none">
+        
+        <div class="relative z-10 flex flex-col items-center justify-center w-full px-8 max-w-4xl">
+            <h1 class="text-white text-5xl md:text-7xl font-bold tracking-tighter mb-8 leading-none">
                 Shulin Cao
             </h1>
-            <p class="text-zinc-200 text-base md:text-xl font-light italic leading-relaxed mb-20 
-                      max-w-[85vw] md:max-w-none mx-auto text-center
-                      whitespace-normal md:whitespace-nowrap break-words overflow-visible">
+            
+            <p class="text-zinc-200 text-base md:text-xl font-light italic leading-relaxed mb-20 max-w-[85vw] md:max-w-prose mx-auto whitespace-normal md:whitespace-nowrap overflow-visible">
                 "In the pursuit of light, we often find ourselves in the most beautiful shadows."
             </p>
+            
             <div class="flex flex-col items-center gap-6 animate-hint cursor-pointer" onclick="enterSite()">
-                <p class="text-white/50 text-[10px] uppercase tracking-[0.5em] font-semibold text-center">
-                    Swipe Up or Scroll to Explore
-                </p>
+                <p class="text-white/50 text-[10px] uppercase tracking-[0.4em] font-semibold">Swipe Up or Scroll to Explore</p>
                 <div class="relative w-[1px] h-14 bg-gradient-to-b from-white/40 to-transparent overflow-hidden">
                     <div class="absolute inset-0 bg-blue-500/80 scroll-indicator"></div>
                 </div>
@@ -58,15 +61,14 @@
         </div>
     </div>
 
-    <button id="theme-toggle" class="fixed bottom-8 right-8 z-50 p-3 rounded-full bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 shadow-lg transition-all focus:outline-none">
+    <button id="theme-toggle" class="fixed bottom-8 right-8 z-50 p-3 rounded-full bg-white/80 dark:bg-zinc-800/80 backdrop-blur-md border border-zinc-200 dark:border-zinc-700 shadow-lg transition-all opacity-0 pointer-events-none focus:outline-none">
         <span class="dark:hidden">🌙</span><span class="hidden dark:inline">☀️</span>
     </button>
-
     <div id="lightbox" class="fixed inset-0 z-[100] bg-black/95 backdrop-blur-sm hidden flex-col items-center justify-center cursor-zoom-out">
         <img id="lightbox-img" src="" class="max-w-[95vw] max-h-[90vh] object-contain rounded-lg shadow-2xl">
     </div>
 
-    <nav id="main-nav" class="fixed top-6 left-1/2 -translate-x-1/2 z-50 opacity-0 transition-opacity duration-500">
+    <nav id="main-nav" class="fixed top-6 left-1/2 -translate-x-1/2 z-50 opacity-0 transition-opacity duration-700">
         <div class="bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md border border-zinc-200 dark:border-zinc-800 px-6 py-3 rounded-full flex gap-8 text-sm font-medium shadow-sm">
             <button id="nav-journey" onclick="switchTab('journey')" class="nav-tab active-tab transition-colors">Journey</button>
             <button id="nav-research" onclick="switchTab('research')" class="nav-tab text-zinc-400 hover:text-blue-600 transition-colors">Research & Work</button>
@@ -74,10 +76,10 @@
         </div>
     </nav>
 
-    <main id="main-content" class="max-w-3xl mx-auto pt-32 pb-24 px-6 opacity-0 transition-opacity duration-700">
+    <main id="main-content" class="max-w-3xl mx-auto pt-32 pb-24 px-6 opacity-0 transition-opacity duration-1000">
         
         <header class="mb-24">
-            <h1 class="text-4xl font-bold tracking-tight mb-4">Shulin Cao</h1>
+            <h1 class="text-4xl font-bold tracking-tight mb-4 text-zinc-900 dark:text-white">Shulin Cao</h1>
             <p class="text-zinc-500 dark:text-zinc-400 leading-relaxed max-w-xl text-base md:text-lg whitespace-normal md:whitespace-nowrap break-words font-light">
                 Research Scientist @ Instagram, Exploring Color, Light and Shadow.
             </p>
@@ -86,12 +88,13 @@
         <div id="view-journey" class="view-container">
             <div class="relative">
                 <div class="absolute left-0 top-2 bottom-0 timeline-line ml-[6px] dark:bg-zinc-800"></div>
+
                 <section class="mb-20 relative pl-10">
                     <div class="absolute left-0 top-[11px] w-3.5 h-3.5 rounded-full bg-white dark:bg-zinc-900 border-2 border-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.5)] z-10"></div>
                     <h2 class="text-xs font-bold text-zinc-400 uppercase tracking-widest mb-8">2025 / Present</h2>
                     <div class="card-hover bg-white dark:bg-zinc-900/50 border border-zinc-100 dark:border-zinc-800 p-6 rounded-2xl group" data-swipe-target="life">
                         <img src="files/BigSur_DoubleExposure.JPG" class="w-full h-auto rounded-3xl mb-4 clickable-img" onclick="openLightbox(this)">
-                        <h4 class="text-sm font-medium">In the nowhere we saw light, Big Sur, California</h4>
+                        <h4 class="text-sm font-medium">Big Sur, California</h4>
                         <p class="text-[10px] text-blue-500 mt-4 font-bold opacity-0 group-hover:opacity-100 transition-opacity uppercase tracking-widest">Swipe Left to See Full Gallery →</p>
                     </div>
                 </section>
@@ -100,47 +103,114 @@
                     <div class="absolute left-0 top-[11px] w-3.5 h-3.5 rounded-full bg-white dark:bg-zinc-900 border-2 border-blue-500 z-10"></div>
                     <h2 class="text-xs font-bold text-zinc-400 uppercase tracking-widest mb-8">Featured Research</h2>
                     <div class="space-y-12" data-swipe-target="research">
+                        
                         <div class="card-hover bg-white dark:bg-zinc-900/50 border border-zinc-100 dark:border-zinc-800 p-6 rounded-2xl flex flex-col md:flex-row gap-6">
-                            <div class="flex-1">
-                                <h3 class="text-lg font-bold mb-2">Regulatory Network Interactions</h3>
-                                <p class="text-zinc-600 dark:text-zinc-400 text-sm font-light">2023 · American Journal of Physiology-Heart</p>
-                            </div>
+                            <div class="flex-1 text-sm"><h3 class="text-lg font-bold mb-2 text-zinc-900 dark:text-white">Regulatory Network Interactions</h3><p class="text-zinc-500 dark:text-zinc-400 font-light italic">2023 · American Journal of Physiology-Heart</p></div>
                             <img src="files/paper1_cover.jpg" class="w-full md:w-32 h-auto object-contain rounded-xl shadow-sm clickable-img" onclick="openLightbox(this)">
                         </div>
+
+                        <div class="card-hover bg-white dark:bg-zinc-900/50 border border-zinc-100 dark:border-zinc-800 p-6 rounded-2xl flex flex-col md:flex-row gap-6">
+                            <div class="flex-1 text-sm"><h3 class="text-lg font-bold mb-2 text-zinc-900 dark:text-white">A Regulatory Network Model in PAH</h3><p class="text-zinc-500 dark:text-zinc-400 font-light italic">2021 · Cells</p></div>
+                            <img src="files/paper2_cover.png" class="w-full md:w-32 h-auto object-contain rounded-xl shadow-sm clickable-img" onclick="openLightbox(this)">
                         </div>
+
+                        <div class="card-hover bg-white dark:bg-zinc-900/50 border border-zinc-100 dark:border-zinc-800 p-6 rounded-2xl group flex flex-col md:flex-row gap-6">
+                            <div class="flex-1 text-sm">
+                                <h3 class="text-lg font-bold mb-2 text-zinc-900 dark:text-white">Interactivity in Network Regulation</h3>
+                                <p class="text-zinc-500 dark:text-zinc-400 font-light italic">2020 · Phil Trans R Soc A</p>
+                                <p class="text-[10px] text-blue-500 mt-4 font-bold opacity-0 group-hover:opacity-100 transition-opacity uppercase tracking-widest">Swipe Left for Full Archive →</p>
+                            </div>
+                        </div>
+
+                    </div>
                 </section>
+            </div>
+        </div>
+
+        <div id="view-research" class="view-container hidden">
+            <button onclick="switchTab('journey')" class="text-xs font-bold text-blue-500 uppercase mb-10 tracking-widest hover:underline">← Back to Journey</button>
+            <div class="space-y-12">
+                <div class="card-hover bg-white dark:bg-zinc-900/50 border border-zinc-100 dark:border-zinc-800 p-6 rounded-2xl shadow-sm">
+                    <div class="flex flex-col md:flex-row gap-6">
+                        <div class="flex-1 text-sm">
+                            <div class="flex items-center gap-3 mb-3"><span class="text-[10px] font-bold px-2 py-0.5 bg-zinc-100 dark:bg-zinc-800 text-zinc-600 rounded uppercase tracking-wider">Paper</span><span class="text-xs text-zinc-400 italic">2023</span></div>
+                            <h3 class="text-lg font-bold mb-2 text-zinc-900 dark:text-white">Regulatory Network Interactions - A Biomedical Representation</h3>
+                            <p class="text-zinc-600 dark:text-zinc-400 mb-6 font-light leading-relaxed">Differential sensitivity to longitudinal and transverse stretch mediates transcriptional responses in mouse neonatal ventricular myocytes</p>
+                            <div class="flex items-center gap-4">
+                                <a href="https://journals.physiology.org/doi/full/10.1152/ajpheart.00562.2023" target="_blank" class="text-sm font-semibold border-b border-zinc-800 dark:border-zinc-400 pb-0.5 hover:text-zinc-400 transition-all">Paper</a>
+                                <button onclick="copyBibTeX(this)" data-bibtex="@article{cao2024differential, title={Differential sensitivity to longitudinal and transverse stretch mediates transcriptional responses in mouse neonatal ventricular myocytes}, author={Cao, Shulin and Buchholz, Kyle S and Tan, Philip and Stowe, Jennifer C and Wang, Ariel and Fowler, Annabelle and Knaus, Katherine R and Khalilimeybodi, Ali and Zambon, Alexander C and Omens, Jeffrey H and others}, journal={American Journal of Physiology-Heart and Circulatory Physiology}, volume={326}, number={2}, pages={H370--H384}, year={2024}, publisher={American Physiological Society Rockville, MD}}" class="text-[10px] font-medium uppercase text-zinc-400 hover:text-blue-600 flex items-center gap-1 transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg> Cite
+                                </button>
+                            </div>
+                        </div>
+                        <img src="files/paper1_cover.jpg" class="w-full md:w-48 h-auto object-contain rounded-xl shadow-sm clickable-img" onclick="openLightbox(this)">
+                    </div>
+                </div>
+
+                <div class="card-hover bg-white dark:bg-zinc-900/50 border border-zinc-100 dark:border-zinc-800 p-6 rounded-2xl shadow-sm">
+                    <div class="flex flex-col md:flex-row gap-6">
+                        <div class="flex-1 text-sm">
+                            <div class="flex items-center gap-3 mb-3"><span class="text-[10px] font-bold px-2 py-0.5 bg-zinc-100 dark:bg-zinc-800 text-zinc-600 rounded uppercase tracking-wider">Paper</span><span class="text-xs text-zinc-400 italic">2021</span></div>
+                            <h3 class="text-lg font-bold mb-2 text-zinc-900 dark:text-white">A Regulatory Network Model in PAH</h3>
+                            <p class="text-zinc-600 dark:text-zinc-400 mb-6 font-light leading-relaxed">Substrate stiffness and stretch regulate profibrotic mechanosignaling in pulmonary arterial adventitial fibroblasts</p>
+                            <div class="flex items-center gap-4">
+                                <a href="https://www.mdpi.com/2073-4409/10/5/1000" target="_blank" class="text-sm font-semibold border-b border-zinc-800 dark:border-zinc-400 pb-0.5 hover:text-zinc-400 transition-all">Paper</a>
+                                <button onclick="copyBibTeX(this)" data-bibtex="@article{wang2021substrate, title={Substrate stiffness and stretch regulate profibrotic mechanosignaling in pulmonary arterial adventitial fibroblasts}, author={Wang, Ariel and Cao, Shulin and Stowe, Jennifer C and Valdez-Jasso, Daniela}, journal={Cells}, volume={10}, number={5}, pages={1000}, year={2021}, publisher={MDPI} }" class="text-[10px] font-medium uppercase text-zinc-400 hover:text-blue-600 flex items-center gap-1 transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg> Cite
+                                </button>
+                            </div>
+                        </div>
+                        <img src="files/paper2_cover.png" class="w-full md:w-48 h-auto object-contain rounded-xl shadow-sm clickable-img" onclick="openLightbox(this)">
+                    </div>
+                </div>
+
+                <div class="card-hover bg-white dark:bg-zinc-900/50 border border-zinc-100 dark:border-zinc-800 p-6 rounded-2xl shadow-sm text-sm">
+                    <div class="flex items-center gap-3 mb-3"><span class="text-[10px] font-bold px-2 py-0.5 bg-zinc-100 dark:bg-zinc-800 text-zinc-600 rounded uppercase tracking-wider">Paper</span><span class="text-xs text-zinc-400 italic">2020</span></div>
+                    <h3 class="text-lg font-bold mb-2 text-zinc-900 dark:text-white">Uncertainty Quantification in PAH</h3>
+                    <p class="text-zinc-600 dark:text-zinc-400 mb-6 font-light leading-relaxed">Quantification of uncertainty in a new network model of pulmonary arterial adventitial fibroblast pro-fibrotic signalling</p>
+                    <button onclick="copyBibTeX(this)" data-bibtex="@article{wang2020quantification, title={Quantification of uncertainty in a new network model of pulmonary arterial adventitial fibroblast pro-fibrotic signalling}, author={Wang, Ariel and Cao, Shulin and Aboelkassem, Yasser and Valdez-Jasso, Daniela}, journal={Philosophical Transactions of the Royal Society A}, volume={378}, number={2173}, pages={20190338}, year={2020}, publisher={The Royal Society Publishing} }" class="text-[10px] font-medium uppercase text-zinc-400 hover:text-blue-600 flex items-center gap-1 transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg> Cite</button>
+                </div>
+
+                <div class="card-hover bg-white dark:bg-zinc-900/50 border border-zinc-100 dark:border-zinc-800 p-6 rounded-2xl shadow-sm text-sm">
+                    <div class="flex items-center gap-3 mb-3"><span class="text-[10px] font-bold px-2 py-0.5 bg-zinc-100 dark:bg-zinc-800 text-zinc-600 rounded uppercase tracking-wider">Paper</span><span class="text-xs text-zinc-400 italic">2020</span></div>
+                    <h3 class="text-lg font-bold mb-2 text-zinc-900 dark:text-white">Interactivity in Network Regulation</h3>
+                    <p class="text-zinc-600 dark:text-zinc-400 mb-6 font-light leading-relaxed">Quantification of model and data uncertainty in a network analysis of cardiac myocyte mechanosignalling</p>
+                    <button onclick="copyBibTeX(this)" data-bibtex="@article{cao2020quantification, title={Quantification of model and data uncertainty in a network analysis of cardiac myocyte mechanosignalling}, author={Cao, Shulin and Aboelkassem, Yasser and Wang, Ariel and Valdez-Jasso, Daniela and Saucerman, Jeffrey J and Omens, Jeffrey H and McCulloch, Andrew D}, journal={Philosophical Transactions of the Royal Society A}, volume={378}, number={2173}, pages={20190336}, year={2020}, publisher={The Royal Society Publishing} }" class="text-[10px] font-medium uppercase text-zinc-400 hover:text-blue-600 flex items-center gap-1 transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg> Cite</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="view-life" class="view-container hidden">
+            <button onclick="switchTab('journey')" class="text-xs font-bold text-blue-500 uppercase mb-10 tracking-widest hover:underline">← Back to Journey</button>
+            <div class="space-y-16">
+                <img src="files/BigSur_DoubleExposure.JPG" class="w-full h-auto rounded-3xl mb-6 shadow-lg clickable-img" onclick="openLightbox(this)">
+                <h4 class="text-sm font-medium">Big Sur, California</h4>
             </div>
         </div>
 
         <footer class="mt-32 pt-12 border-t border-zinc-100 dark:border-zinc-800 flex justify-between items-center text-zinc-400 dark:text-zinc-500 text-sm">
             <p>© 2025 Shulin Cao</p>
-            <a href="https://www.linkedin.com/in/lynncho1993/" target="_blank" class="hover:text-blue-600">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/lynncho1993/" target="_blank" class="hover:text-blue-600 transition-colors">LinkedIn</a>
         </footer>
     </main>
 
     <script>
-        // 1. LANDING TO JOURNEY TRANSITION
-        const landingPage = document.getElementById('landing-page');
-        const mainContent = document.getElementById('main-content');
-        const mainNav = document.getElementById('main-nav');
-
+        /* SITE TRANSITION logic */
         function enterSite() {
-            landingPage.classList.add('fade-out');
-            mainContent.classList.replace('opacity-0', 'opacity-100');
-            mainNav.classList.replace('opacity-0', 'opacity-100');
+            document.getElementById('landing-page').classList.add('fade-out');
+            document.getElementById('main-content').classList.replace('opacity-0', 'opacity-100');
+            document.getElementById('main-nav').classList.replace('opacity-0', 'opacity-100');
+            document.getElementById('theme-toggle').classList.replace('opacity-0', 'opacity-100');
+            document.getElementById('theme-toggle').classList.remove('pointer-events-none');
             document.body.classList.add('content-visible');
         }
 
-        // Trigger on Scroll or Swipe Up
-        window.addEventListener('wheel', (e) => { if(e.deltaY > 0) enterSite(); });
-        
-        let touchStartY = 0;
-        document.addEventListener('touchstart', e => touchStartY = e.changedTouches[0].screenY);
-        document.addEventListener('touchend', e => { 
-            if (touchStartY - e.changedTouches[0].screenY > 50) enterSite(); 
-        });
+        window.addEventListener('wheel', (e) => { if(e.deltaY > 0 && !document.body.classList.contains('content-visible')) enterSite(); });
+        let touchSY = 0;
+        document.addEventListener('touchstart', e => touchSY = e.changedTouches[0].screenY);
+        document.addEventListener('touchend', e => { if (touchSY - e.changedTouches[0].screenY > 50 && !document.body.classList.contains('content-visible')) enterSite(); });
 
-        // 2. TAB SYSTEM
+        /* TAB MANAGEMENT */
         function switchTab(id) {
             document.querySelectorAll('.view-container').forEach(v => v.classList.add('hidden'));
             document.getElementById(`view-${id}`).classList.remove('hidden');
@@ -149,21 +219,19 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // 3. HORIZONTAL SWIPE/DRAG (Main Tab Highlight)
-        let touchStartX = 0; let isDown = false; let startX; let scrollTarget = null;
-        document.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; scrollTarget = e.target.closest('[data-swipe-target]'); });
-        document.addEventListener('touchend', e => { if (!scrollTarget) return; if (touchStartX - e.changedTouches[0].screenX > 80) switchTab(scrollTarget.getAttribute('data-swipe-target')); });
+        /* GESTURE Logic (Horizontal Swipe) */
+        let isDown = false; let startX; let scrollTarget = null;
+        document.addEventListener('touchstart', e => { startX = e.changedTouches[0].screenX; scrollTarget = e.target.closest('[data-swipe-target]'); });
+        document.addEventListener('touchend', e => { if (!scrollTarget) return; if (startX - e.changedTouches[0].screenX > 80) switchTab(scrollTarget.getAttribute('data-swipe-target')); });
         document.addEventListener('mousedown', e => { isDown = true; startX = e.pageX; scrollTarget = e.target.closest('[data-swipe-target]'); });
         document.addEventListener('mouseup', e => { if (!isDown || !scrollTarget) return; isDown = false; if (startX - e.pageX > 100) switchTab(scrollTarget.getAttribute('data-swipe-target')); });
 
-        // 4. CORE LOGICS
-        const themeToggle = document.getElementById('theme-toggle');
+        /* CORE FEATURES (Theme/Lightbox/BibTeX) */
         const html = document.documentElement;
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) html.classList.add('dark');
-        themeToggle.addEventListener('click', () => { html.classList.toggle('dark'); localStorage.theme = html.classList.contains('dark') ? 'dark' : 'light'; });
-
-        function openLightbox(el) { document.getElementById('lightbox-img').src = el.src; document.getElementById('lightbox').classList.remove('hidden'); document.getElementById('lightbox').classList.add('flex'); document.body.style.overflow = 'hidden'; }
-        document.getElementById('lightbox').onclick = () => { document.getElementById('lightbox').classList.add('hidden'); if(landingPage.classList.contains('fade-out')) document.body.style.overflow = 'auto'; };
+        document.getElementById('theme-toggle').addEventListener('click', () => { html.classList.toggle('dark'); localStorage.theme = html.classList.contains('dark') ? 'dark' : 'light'; });
+        function openLightbox(el) { document.getElementById('lightbox-img').src = el.src; document.getElementById('lightbox').classList.remove('hidden').add('flex'); document.body.style.overflow = 'hidden'; }
+        document.getElementById('lightbox').onclick = () => { document.getElementById('lightbox').classList.add('hidden'); if(document.body.classList.contains('content-visible')) document.body.style.overflow = 'auto'; };
         function copyBibTeX(btn) { navigator.clipboard.writeText(btn.getAttribute('data-bibtex')).then(() => { const old = btn.innerHTML; btn.innerHTML = "SUCCESS!"; setTimeout(() => btn.innerHTML = old, 2000); }); }
     </script>
 </body>
