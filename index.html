@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,16 +7,31 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #fafafa; color: #1a1a1a; }
-        .timeline-line { width: 1px; background: linear-gradient(to bottom, #e5e7eb 0%, #e5e7eb 100%); }
+        /* Base styles and transitions */
+        body { font-family: 'Inter', sans-serif; background-color: #fafafa; color: #1a1a1a; transition: background-color 0.3s, color 0.3s; }
+        .timeline-line { width: 1px; background: #e5e7eb; }
         .card-hover { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
         .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.05); }
+        .clickable-img { cursor: zoom-in; }
     </style>
+    <script>
+        tailwind.config = { darkMode: 'class' }
+    </script>
 </head>
-<body class="selection:bg-blue-100">
+<body class="selection:bg-blue-100 dark:bg-[#121212] dark:text-zinc-100">
+
+    <button id="theme-toggle" class="fixed bottom-8 right-8 z-50 p-3 rounded-full bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 shadow-lg hover:scale-110 transition-all focus:outline-none">
+        <span class="dark:hidden">🌙</span>
+        <span class="hidden dark:inline">☀️</span>
+    </button>
+
+    <div id="lightbox" class="fixed inset-0 z-[100] bg-black/95 backdrop-blur-sm hidden flex-col items-center justify-center cursor-zoom-out">
+        <img id="lightbox-img" src="" class="max-w-[95vw] max-h-[90vh] object-contain rounded-lg shadow-2xl transition-transform duration-300">
+        <p id="lightbox-caption" class="mt-4 text-zinc-400 text-sm font-light tracking-widest uppercase"></p>
+    </div>
 
     <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50">
-        <div class="bg-white/80 backdrop-blur-md border border-zinc-200 px-6 py-3 rounded-full flex gap-8 text-sm font-medium shadow-sm">
+        <div class="bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md border border-zinc-200 dark:border-zinc-800 px-6 py-3 rounded-full flex gap-8 text-sm font-medium shadow-sm">
             <a href="#" class="hover:text-blue-600 transition-colors">Journey</a>
             <a href="#" class="hover:text-blue-600 transition-colors">Research & Work</a>
             <a href="#" class="hover:text-blue-600 transition-colors">Life Exploration</a>
@@ -27,23 +42,24 @@
         
         <header class="mb-24">
             <h1 class="text-4xl font-bold tracking-tight mb-4">Shulin Cao</h1>
-                <p class="text-zinc-500 leading-relaxed max-w-xl text-base md:text-lg whitespace-normal md:whitespace-nowrap break-words">
-                    Research Scientist @ Instagram, Exploring Color, Light and Shadow.
-                </p>
+            <p class="text-zinc-500 leading-relaxed max-w-xl text-base md:text-lg whitespace-normal md:whitespace-nowrap break-words">
+                Research Scientist @ Instagram, Exploring Color, Light and Shadow.
+            </p>
         </header>
 
         <div class="relative">
-            <div class="absolute left-0 top-2 bottom-0 timeline-line ml-[6px]"></div>
+            <div class="absolute left-0 top-2 bottom-0 timeline-line ml-[6px] dark:bg-zinc-800"></div>
 
             <section class="mb-20 relative pl-10">
-                <div class="absolute left-0 top-1.5 w-3.5 h-3.5 rounded-full bg-white border-2 border-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.5)]"></div>
+                <div class="absolute left-0 top-[11px] w-3.5 h-3.5 rounded-full bg-white border-2 border-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.5)] z-10"></div>
                 <h2 class="text-xs font-bold text-zinc-400 uppercase tracking-widest mb-8">2025 / Present</h2>
 
-                <div class="card-hover bg-white border border-zinc-100 p-6 rounded-2xl mb-24 shadow-sm hover:border-purple-200/50 transition-colors">
-                    <div class="overflow-hidden rounded-3xl bg-zinc-100 mb-4">
+                <div class="card-hover bg-white dark:bg-zinc-900/50 border border-zinc-100 dark:border-zinc-800 p-6 rounded-2xl mb-24 shadow-sm hover:border-purple-200/50 transition-colors">
+                    <div class="overflow-hidden rounded-3xl bg-zinc-100 dark:bg-zinc-800 mb-4 group">
                         <img src="files/BigSur_DoubleExposure.JPG" 
-                             alt="The Shape of Light" 
-                             class="w-full h-auto block group-hover:scale-105 transition-transform duration-700">
+                             alt="In the nowhere we saw light, Big Sur, California" 
+                             class="w-full h-auto block clickable-img group-hover:scale-105 transition-transform duration-700"
+                             onclick="openLightbox(this)">
                     </div>
                     <div class="pl-2">
                         <h4 class="text-sm font-medium">In the nowhere we saw light, Big Sur, California</h4>
@@ -53,198 +69,75 @@
             </section>
 
             <section class="mb-20 relative pl-10">
-                <div class="absolute left-0 top-1.5 w-3.5 h-3.5 rounded-full bg-white border-2 border-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.5)]"></div>
+                <div class="absolute left-0 top-[11px] w-3.5 h-3.5 rounded-full bg-white border-2 border-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.5)] z-10"></div>
                 <h2 class="text-sm font-bold text-zinc-400 uppercase tracking-widest mb-8">2023</h2>
                 
-                <!-- Paper 1 -->
-                <div class="card-hover bg-white border border-zinc-100 p-6 rounded-2xl mb-24 shadow-sm hover:border-purple-200/50 transition-colors">
+                <div class="card-hover bg-white dark:bg-zinc-900/50 border border-zinc-100 dark:border-zinc-800 p-6 rounded-2xl mb-24 shadow-sm hover:border-purple-200/50 transition-colors">
                     <div class="flex flex-col md:flex-row gap-6">
                         <div class="flex-1">
                             <div class="flex items-center gap-3 mb-3">
-                                <span class="text-[10px] font-bold px-2 py-0.5 bg-zinc-100 text-zinc-600 rounded uppercase tracking-wider">Paper</span>
+                                <span class="text-[10px] font-bold px-2 py-0.5 bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 rounded uppercase tracking-wider">Paper</span>
                                 <span class="text-xs text-zinc-400 italic">2023</span>
                             </div>
                             <h3 class="text-lg font-bold mb-2">Regulatory Network Interactions - A Biomedical Representation</h3>
-                            <p class="text-zinc-600 text-sm leading-relaxed mb-6">
+                            <p class="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed mb-6">
                                 Differential sensitivity to longitudinal and transverse stretch mediates transcriptional responses in mouse neonatal ventricular myocytes
                             </p>
                             <div class="flex items-center gap-4">
-                                <a href="https://journals.physiology.org/doi/full/10.1152/ajpheart.00562.2023" 
-                                   target="_blank"
-                                   class="text-sm font-semibold border-b border-zinc-800 pb-0.5 hover:text-zinc-400">Paper</a>
+                                <a href="https://journals.physiology.org/doi/full/10.1152/ajpheart.00562.2023" target="_blank" class="text-sm font-semibold border-b border-zinc-800 dark:border-zinc-400 pb-0.5 hover:text-zinc-400">Paper</a>
                                 <button onclick="copyBibTeX(this)" 
-                                data-bibtex="@article{cao2024differential,
-                                  title={Differential sensitivity to longitudinal and transverse stretch mediates transcriptional responses in mouse neonatal ventricular myocytes},
-                                  author={Cao, Shulin and Buchholz, Kyle S and Tan, Philip and Stowe, Jennifer C and Wang, Ariel and Fowler, Annabelle and Knaus, Katherine R and Khalilimeybodi, Ali and Zambon, Alexander C and Omens, Jeffrey H and others},
-                                  journal={American Journal of Physiology-Heart and Circulatory Physiology},
-                                  volume={326},
-                                  number={2},
-                                  pages={H370--H384},
-                                  year={2024},
-                                  publisher={American Physiological Society Rockville, MD}
-                                }"
-                                class="ml-2 text-[10px] font-medium uppercase tracking-wider text-zinc-400 hover:text-blue-600 transition-colors flex items-center gap-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
-                            Cite
+                                        data-bibtex="@article{cao2024differential, title={Differential sensitivity to longitudinal and transverse stretch mediates transcriptional responses in mouse neonatal ventricular myocytes}, author={Cao, Shulin and Buchholz, Kyle S and Tan, Philip and Stowe, Jennifer C and Wang, Ariel and Fowler, Annabelle and Knaus, Katherine R and Khalilimeybodi, Ali and Zambon, Alexander C and Omens, Jeffrey H and others}, journal={American Journal of Physiology-Heart and Circulatory Physiology}, volume={326}, number={2}, pages={H370--H384}, year={2024}, publisher={American Physiological Society Rockville, MD}}"
+                                        class="ml-2 text-[10px] font-medium uppercase tracking-wider text-zinc-400 hover:text-blue-600 transition-colors flex items-center gap-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                                    Cite
                                 </button>
                             </div>
                         </div>
                         <div class="w-full md:w-48 shrink-0 flex items-center justify-center">
-                            <div class="rounded-xl overflow-hidden bg-zinc-50 border border-zinc-100 w-full">
-                                <img src="files/paper1_cover.jpg" 
-                                     alt="Research Preview" 
-                                     class="w-full h-auto object-contain block">
+                            <div class="rounded-xl overflow-hidden bg-zinc-50 dark:bg-zinc-800 border border-zinc-100 dark:border-zinc-700 w-full">
+                                <img src="files/paper1_cover.jpg" alt="Research Preview" class="w-full h-auto object-contain block clickable-img" onclick="openLightbox(this)">
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- End of Paper 1 -->
             </section>
-            
+
             <section class="mb-20 relative pl-10">
-                <div class="absolute left-0 top-1.5 w-3.5 h-3.5 rounded-full bg-white border-2 border-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.5)]"></div>
+                <div class="absolute left-0 top-[11px] w-3.5 h-3.5 rounded-full bg-white border-2 border-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.5)] z-10"></div>
                 <h2 class="text-sm font-bold text-zinc-400 uppercase tracking-widest mb-8">2021</h2>
-                <!-- Paper 2 -->
-                <div class="card-hover bg-white border border-zinc-100 p-6 rounded-2xl mb-24 shadow-sm hover:border-purple-200/50 transition-colors">
+                
+                <div class="card-hover bg-white dark:bg-zinc-900/50 border border-zinc-100 dark:border-zinc-800 p-6 rounded-2xl mb-24 shadow-sm hover:border-purple-200/50 transition-colors">
                     <div class="flex flex-col md:flex-row gap-6">
                         <div class="flex-1">
                             <div class="flex items-center gap-3 mb-3">
-                                <span class="text-[10px] font-bold px-2 py-0.5 bg-zinc-100 text-zinc-600 rounded uppercase tracking-wider">Paper</span>
+                                <span class="text-[10px] font-bold px-2 py-0.5 bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 rounded uppercase tracking-wider">Paper</span>
                                 <span class="text-xs text-zinc-400 italic">2021</span>
                             </div>
                             <h3 class="text-lg font-bold mb-2">A Regulatory Network Model in PAH</h3>
-                            <p class="text-zinc-600 text-sm leading-relaxed mb-6">
+                            <p class="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed mb-6">
                                 Substrate stiffness and stretch regulate profibrotic mechanosignaling in pulmonary arterial adventitial fibroblasts
                             </p>
                             <div class="flex items-center gap-4">
-                                <a href="https://www.mdpi.com/2073-4409/10/5/1000" 
-                                   target="_blank"
-                                   class="text-sm font-semibold border-b border-zinc-800 pb-0.5 hover:text-zinc-400">Paper</a>
+                                <a href="https://www.mdpi.com/2073-4409/10/5/1000" target="_blank" class="text-sm font-semibold border-b border-zinc-800 dark:border-zinc-400 pb-0.5 hover:text-zinc-400">Paper</a>
                                 <button onclick="copyBibTeX(this)" 
-                                data-bibtex="@article{wang2021substrate,
-                                  title={Substrate stiffness and stretch regulate profibrotic mechanosignaling in pulmonary arterial adventitial fibroblasts},
-                                  author={Wang, Ariel and Cao, Shulin and Stowe, Jennifer C and Valdez-Jasso, Daniela},
-                                  journal={Cells},
-                                  volume={10},
-                                  number={5},
-                                  pages={1000},
-                                  year={2021},
-                                  publisher={MDPI}
-                                }"
-                                class="ml-2 text-[10px] font-medium uppercase tracking-wider text-zinc-400 hover:text-blue-600 transition-colors flex items-center gap-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
-                            Cite
+                                        data-bibtex="@article{wang2021substrate, title={Substrate stiffness and stretch regulate profibrotic mechanosignaling in pulmonary arterial adventitial fibroblasts}, author={Wang, Ariel and Cao, Shulin and Stowe, Jennifer C and Valdez-Jasso, Daniela}, journal={Cells}, volume={10}, number={5}, pages={1000}, year={2021}, publisher={MDPI} }"
+                                        class="ml-2 text-[10px] font-medium uppercase tracking-wider text-zinc-400 hover:text-blue-600 transition-colors flex items-center gap-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                                    Cite
                                 </button>
                             </div>
                         </div>
                         <div class="w-full md:w-48 shrink-0 flex items-center justify-center">
-                            <div class="rounded-xl overflow-hidden bg-zinc-50 border border-zinc-100 w-full">
-                                <img src="files/paper2_cover.png" 
-                                     alt="Research Preview" 
-                                     class="w-full h-auto object-contain block">
+                            <div class="rounded-xl overflow-hidden bg-zinc-50 dark:bg-zinc-800 border border-zinc-100 dark:border-zinc-700 w-full">
+                                <img src="files/paper2_cover.png" alt="Research Preview" class="w-full h-auto object-contain block clickable-img" onclick="openLightbox(this)">
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- End of Paper 2 -->
             </section>
-                
-            <section class="mb-20 relative pl-10">
-                <div class="absolute left-0 top-1.5 w-3.5 h-3.5 rounded-full bg-white border-2 border-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.5)]"></div>
-                <h2 class="text-sm font-bold text-zinc-400 uppercase tracking-widest mb-8">2020</h2>
-                <!-- Paper 3 -->
-                <div class="card-hover bg-white border border-zinc-100 p-6 rounded-2xl mb-24 shadow-sm hover:border-purple-200/50 transition-colors">
-                    <div class="flex flex-col md:flex-row gap-6">
-                        <div class="flex-1">
-                            <div class="flex items-center gap-3 mb-3">
-                                <span class="text-[10px] font-bold px-2 py-0.5 bg-zinc-100 text-zinc-600 rounded uppercase tracking-wider">Paper</span>
-                                <span class="text-xs text-zinc-400 italic">2020</span>
-                            </div>
-                            <h3 class="text-lg font-bold mb-2">Uncertainty Quantification - the Application in Understanding PAH</h3>
-                            <p class="text-zinc-600 text-sm leading-relaxed mb-6">
-                                Quantification of uncertainty in a new network model of pulmonary arterial adventitial fibroblast pro-fibrotic signalling
-                            </p>
-                            <div class="flex items-center gap-4">
-                                <a href="https://royalsocietypublishing.org/rsta/article-abstract/378/2173/20190338/41070/Quantification-of-uncertainty-in-a-new-network?redirectedFrom=fulltext" 
-                                   target="_blank"
-                                   class="text-sm font-semibold border-b border-zinc-800 pb-0.5 hover:text-zinc-400">Paper</a>
-                                <button onclick="copyBibTeX(this)" 
-                                data-bibtex="@article{wang2020quantification,
-                                  title={Quantification of uncertainty in a new network model of pulmonary arterial adventitial fibroblast pro-fibrotic signalling},
-                                  author={Wang, Ariel and Cao, Shulin and Aboelkassem, Yasser and Valdez-Jasso, Daniela},
-                                  journal={Philosophical Transactions of the Royal Society A},
-                                  volume={378},
-                                  number={2173},
-                                  pages={20190338},
-                                  year={2020},
-                                  publisher={The Royal Society Publishing}
-                                }"
-                                class="ml-2 text-[10px] font-medium uppercase tracking-wider text-zinc-400 hover:text-blue-600 transition-colors flex items-center gap-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
-                            Cite
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End of Paper 3 -->
-
-                <!-- Paper 4 -->
-                <div class="card-hover bg-white border border-zinc-100 p-6 rounded-2xl mb-24 shadow-sm hover:border-purple-200/50 transition-colors">
-                    <div class="flex flex-col md:flex-row gap-6">
-                        <div class="flex-1">
-                            <div class="flex items-center gap-3 mb-3">
-                                <span class="text-[10px] font-bold px-2 py-0.5 bg-zinc-100 text-zinc-600 rounded uppercase tracking-wider">Paper</span>
-                                <span class="text-xs text-zinc-400 italic">2020</span>
-                            </div>
-                            <h3 class="text-lg font-bold mb-2">Uncertainty Quantification - The Interactivity in Network Regulation</h3>
-                            <p class="text-zinc-600 text-sm leading-relaxed mb-6">
-                                Quantification of model and data uncertainty in a network analysis of cardiac myocyte mechanosignalling
-                            </p>
-                            <div class="flex items-center gap-4">
-                                <a href="https://royalsocietypublishing.org/rsta/article-abstract/378/2173/20190336/41032/Quantification-of-model-and-data-uncertainty-in-a?redirectedFrom=fulltext" 
-                                   target="_blank"
-                                   class="text-sm font-semibold border-b border-zinc-800 pb-0.5 hover:text-zinc-400">Paper</a>
-                                <button onclick="copyBibTeX(this)" 
-                                data-bibtex="@article{cao2020quantification,
-                                  title={Quantification of model and data uncertainty in a network analysis of cardiac myocyte mechanosignalling},
-                                  author={Cao, Shulin and Aboelkassem, Yasser and Wang, Ariel and Valdez-Jasso, Daniela and Saucerman, Jeffrey J and Omens, Jeffrey H and McCulloch, Andrew D},
-                                  journal={Philosophical Transactions of the Royal Society A},
-                                  volume={378},
-                                  number={2173},
-                                  pages={20190336},
-                                  year={2020},
-                                  publisher={The Royal Society Publishing}
-                                }"
-                                class="ml-2 text-[10px] font-medium uppercase tracking-wider text-zinc-400 hover:text-blue-600 transition-colors flex items-center gap-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
-                            Cite
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End of Paper 4 -->
-
-            </section>
-
-            <!-- <section class="mb-20 relative pl-10">
-                <div class="absolute left-0 top-1.5 w-3.5 h-3.5 rounded-full bg-zinc-200 border-2 border-white"></div>
-                <h2 class="text-sm font-bold text-zinc-400 uppercase tracking-widest mb-8">2023</h2>
-                
-                <div class="card-hover bg-white border border-zinc-100 p-8 rounded-3xl">
-                    <div class="flex items-start justify-between mb-4">
-                        <span class="text-xs font-medium px-2.5 py-1 bg-zinc-100 text-zinc-600 rounded-full">Project</span>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 italic">Computational Photography Toolkit</h3>
-                    <p class="text-zinc-600 leading-relaxed">
-                        一个为摄影师开发的开源工具包，用于自动化处理 RAW 文件中的色彩一致性。
-                    </p>
-                </div>
-            </section> -->
         </div>
 
-        <footer class="mt-32 pt-12 border-t border-zinc-100 flex justify-between items-center text-zinc-400 text-sm">
+        <footer class="mt-32 pt-12 border-t border-zinc-100 dark:border-zinc-800 flex justify-between items-center text-zinc-400 text-sm">
             <p>© 2025 Shulin Cao</p>
             <div class="flex gap-6">
                 <a href="#" class="hover:text-zinc-800">Twitter</a>
@@ -253,5 +146,45 @@
         </footer>
     </main>
 
+    <script>
+        // Theme Toggle Persistence
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        }
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            localStorage.theme = html.classList.contains('dark') ? 'dark' : 'light';
+        });
+
+        // Lightbox Logic
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        function openLightbox(imgElement) {
+            lightboxImg.src = imgElement.src;
+            lightboxCaption.innerText = imgElement.alt || "";
+            lightbox.classList.remove('hidden');
+            lightbox.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+        lightbox.addEventListener('click', () => {
+            lightbox.classList.add('hidden');
+            lightbox.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Copy Citation Function
+        function copyBibTeX(btn) {
+            const bibtex = btn.getAttribute('data-bibtex');
+            navigator.clipboard.writeText(bibtex).then(() => {
+                const oldText = btn.innerHTML;
+                btn.innerHTML = 'COPIED!';
+                setTimeout(() => btn.innerHTML = oldText, 2000);
+            });
+        }
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') lightbox.click(); });
+    </script>
 </body>
 </html>
