@@ -7,6 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
+        /* [cite: 3, 4, 5, 6] */
         body { font-family: 'Inter', sans-serif; background-color: #fafafa; color: #1a1a1a; transition: background-color 0.3s, color 0.3s; overflow-x: hidden; }
         .timeline-line { width: 1px; background: #e5e7eb; }
         .card-hover { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: grab; user-select: none; }
@@ -54,29 +55,43 @@
                     <div class="absolute left-0 top-[11px] w-3.5 h-3.5 rounded-full bg-white dark:bg-zinc-900 border-2 border-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.5)] z-10"></div>
                     <h2 class="text-xs font-bold text-zinc-400 uppercase tracking-widest mb-8">2025 / Present</h2>
                     <div class="card-hover bg-white dark:bg-zinc-900/50 border border-zinc-100 dark:border-zinc-800 p-6 rounded-2xl group" data-swipe-target="life">
-                        <img src="files/BigSur_DoubleExposure.JPG" class="w-full h-auto rounded-3xl mb-4 clickable-img" onclick="openLightbox(this)">
+                        <div class="overflow-hidden rounded-3xl bg-zinc-100 dark:bg-zinc-800 mb-4">
+                            <img src="files/BigSur_DoubleExposure.JPG" alt="The Shape of Light" class="w-full h-auto block clickable-img group-hover:scale-105 transition-transform duration-700" onclick="openLightbox(this)">
+                        </div>
                         <h4 class="text-sm font-medium">In the nowhere we saw light, Big Sur, California</h4>
                         <p class="text-xs text-zinc-400 mt-1">Sony A7 IV · 35mm f/1.4</p>
-                        <p class="text-[10px] text-blue-500 mt-4 font-bold opacity-0 group-hover:opacity-100 transition-opacity uppercase tracking-widest">Swipe Left to See Full Gallery →</p>
+                        <p class="text-[10px] text-blue-500 mt-4 font-bold opacity-0 group-hover:opacity-100 transition-opacity uppercase tracking-widest">Swipe or Drag Left to See Full Gallery →</p>
                     </div>
                 </section>
 
                 <section class="mb-20 relative pl-10">
                     <div class="absolute left-0 top-[11px] w-3.5 h-3.5 rounded-full bg-white dark:bg-zinc-900 border-2 border-blue-500 z-10"></div>
                     <h2 class="text-xs font-bold text-zinc-400 uppercase tracking-widest mb-8">Featured Research</h2>
-                    <div class="space-y-8" data-swipe-target="research">
-                        <div class="card-hover bg-white dark:bg-zinc-900/50 border border-zinc-100 dark:border-zinc-800 p-6 rounded-2xl">
-                            <span class="text-[10px] font-bold px-2 py-0.5 bg-zinc-100 dark:bg-zinc-800 text-zinc-600 rounded uppercase tracking-wider">First Author</span>
-                            <h3 class="text-lg font-bold mt-3">Regulatory Network Interactions - Biomedical Representation</h3>
+                    <div class="space-y-12" data-swipe-target="research">
+                        
+                        <div class="card-hover bg-white dark:bg-zinc-900/50 border border-zinc-100 dark:border-zinc-800 p-6 rounded-2xl flex flex-col md:flex-row gap-6">
+                            <div class="flex-1">
+                                <h3 class="text-lg font-bold mb-2">Regulatory Network Interactions - Biomedical Representation</h3>
+                                <p class="text-zinc-600 dark:text-zinc-400 text-sm font-light">2023 · American Journal of Physiology-Heart</p>
+                            </div>
+                            <img src="files/paper1_cover.jpg" class="w-full md:w-32 h-auto object-contain rounded-xl clickable-img" onclick="openLightbox(this)">
                         </div>
-                        <div class="card-hover bg-white dark:bg-zinc-900/50 border border-zinc-100 dark:border-zinc-800 p-6 rounded-2xl">
-                            <span class="text-[10px] font-bold px-2 py-0.5 bg-zinc-100 dark:bg-zinc-800 text-zinc-600 rounded uppercase tracking-wider">First Author</span>
-                            <h3 class="text-lg font-bold mt-3">A Regulatory Network Model in PAH</h3>
+
+                        <div class="card-hover bg-white dark:bg-zinc-900/50 border border-zinc-100 dark:border-zinc-800 p-6 rounded-2xl flex flex-col md:flex-row gap-6">
+                            <div class="flex-1">
+                                <h3 class="text-lg font-bold mb-2">A Regulatory Network Model in PAH</h3>
+                                <p class="text-zinc-600 dark:text-zinc-400 text-sm font-light">2021 · Cells</p>
+                            </div>
+                            <img src="files/paper2_cover.png" class="w-full md:w-32 h-auto object-contain rounded-xl clickable-img" onclick="openLightbox(this)">
                         </div>
-                        <div class="card-hover bg-white dark:bg-zinc-900/50 border border-zinc-100 dark:border-zinc-800 p-6 rounded-2xl group">
-                            <span class="text-[10px] font-bold px-2 py-0.5 bg-zinc-100 dark:bg-zinc-800 text-zinc-600 rounded uppercase tracking-wider">First Author</span>
-                            <h3 class="text-lg font-bold mt-3">Interactivity in Network Regulation</h3>
-                            <p class="text-[10px] text-blue-500 mt-4 font-bold opacity-0 group-hover:opacity-100 transition-opacity uppercase tracking-widest">Swipe Left for Full Archive →</p>
+
+                        <div class="card-hover bg-white dark:bg-zinc-900/50 border border-zinc-100 dark:border-zinc-800 p-6 rounded-2xl flex flex-col md:flex-row gap-6 group">
+                            <div class="flex-1">
+                                <h3 class="text-lg font-bold mb-2">Interactivity in Network Regulation</h3>
+                                <p class="text-zinc-600 dark:text-zinc-400 text-sm font-light">2020 · Phil Trans R Soc A</p>
+                                <p class="text-[10px] text-blue-500 mt-4 font-bold opacity-0 group-hover:opacity-100 transition-opacity uppercase tracking-widest">Drag Left to See All Papers & BibTeX →</p>
+                            </div>
+                            <img src="files/paper2_cover.png" class="w-full md:w-32 h-auto object-contain rounded-xl clickable-img" onclick="openLightbox(this)">
                         </div>
                     </div>
                 </section>
@@ -86,11 +101,11 @@
         <div id="view-research" class="view-container hidden">
             <button onclick="switchTab('journey')" class="text-xs font-bold text-blue-500 uppercase mb-10 tracking-widest hover:underline">← Back to Journey</button>
             <div class="space-y-12">
-                <div class="card-hover bg-white dark:bg-zinc-900/50 border border-zinc-100 dark:border-zinc-800 p-6 rounded-2xl shadow-sm">
+                <div class="card-hover bg-white dark:bg-zinc-900/50 border border-zinc-100 dark:border-zinc-800 p-6 rounded-2xl">
                     <div class="flex flex-col md:flex-row gap-6">
                         <div class="flex-1 text-sm">
                             <div class="flex items-center gap-3 mb-3">
-                                <span class="text-[10px] font-bold px-2 py-0.5 bg-zinc-100 dark:bg-zinc-800 text-zinc-600 rounded uppercase tracking-wider">Paper</span>
+                                <span class="text-[10px] font-bold px-2 py-0.5 bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 rounded uppercase tracking-wider">Paper</span>
                                 <span class="text-xs text-zinc-400 italic">2023</span>
                             </div>
                             <h3 class="text-lg font-bold mb-2">Regulatory Network Interactions - A Biomedical Representation</h3>
@@ -106,11 +121,11 @@
                     </div>
                 </div>
 
-                <div class="card-hover bg-white dark:bg-zinc-900/50 border border-zinc-100 dark:border-zinc-800 p-6 rounded-2xl shadow-sm">
+                <div class="card-hover bg-white dark:bg-zinc-900/50 border border-zinc-100 dark:border-zinc-800 p-6 rounded-2xl">
                     <div class="flex flex-col md:flex-row gap-6">
                         <div class="flex-1 text-sm">
                             <div class="flex items-center gap-3 mb-3">
-                                <span class="text-[10px] font-bold px-2 py-0.5 bg-zinc-100 dark:bg-zinc-800 text-zinc-600 rounded uppercase tracking-wider">Paper</span>
+                                <span class="text-[10px] font-bold px-2 py-0.5 bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 rounded uppercase tracking-wider">Paper</span>
                                 <span class="text-xs text-zinc-400 italic">2021</span>
                             </div>
                             <h3 class="text-lg font-bold mb-2">A Regulatory Network Model in PAH</h3>
@@ -126,12 +141,12 @@
                     </div>
                 </div>
 
-                <div class="card-hover bg-white dark:bg-zinc-900/50 border border-zinc-100 dark:border-zinc-800 p-6 rounded-2xl shadow-sm text-sm">
+                <div class="card-hover bg-white dark:bg-zinc-900/50 border border-zinc-100 dark:border-zinc-800 p-6 rounded-2xl text-sm">
                     <div class="flex items-center gap-3 mb-3">
                         <span class="text-[10px] font-bold px-2 py-0.5 bg-zinc-100 dark:bg-zinc-800 text-zinc-600 rounded uppercase tracking-wider">Paper</span>
                         <span class="text-xs text-zinc-400 italic">2020</span>
                     </div>
-                    <h3 class="text-lg font-bold mb-2">Uncertainty Quantification in PAH</h3>
+                    <h3 class="text-lg font-bold mb-2 tracking-tight">Uncertainty Quantification in PAH</h3>
                     <p class="text-zinc-600 dark:text-zinc-400 leading-relaxed mb-6 font-light">Quantification of uncertainty in a new network model of pulmonary arterial adventitial fibroblast pro-fibrotic signalling</p>
                     <div class="flex items-center gap-4">
                         <a href="https://royalsocietypublishing.org/rsta/article-abstract/378/2173/20190338/41070/Quantification-of-uncertainty-in-a-new-network" target="_blank" class="text-sm font-semibold border-b border-zinc-800 dark:border-zinc-400 pb-0.5 hover:text-zinc-400 transition-all">Paper</a>
@@ -141,12 +156,12 @@
                     </div>
                 </div>
 
-                <div class="card-hover bg-white dark:bg-zinc-900/50 border border-zinc-100 dark:border-zinc-800 p-6 rounded-2xl shadow-sm text-sm">
+                <div class="card-hover bg-white dark:bg-zinc-900/50 border border-zinc-100 dark:border-zinc-800 p-6 rounded-2xl text-sm">
                     <div class="flex items-center gap-3 mb-3">
                         <span class="text-[10px] font-bold px-2 py-0.5 bg-zinc-100 dark:bg-zinc-800 text-zinc-600 rounded uppercase tracking-wider">Paper</span>
                         <span class="text-xs text-zinc-400 italic">2020</span>
                     </div>
-                    <h3 class="text-lg font-bold mb-2">Interactivity in Network Regulation</h3>
+                    <h3 class="text-lg font-bold mb-2 tracking-tight">Interactivity in Network Regulation</h3>
                     <p class="text-zinc-600 dark:text-zinc-400 leading-relaxed mb-6 font-light">Quantification of model and data uncertainty in a network analysis of cardiac myocyte mechanosignalling</p>
                     <div class="flex items-center gap-4">
                         <a href="https://royalsocietypublishing.org/rsta/article-abstract/378/2173/20190336/41032/Quantification-of-model-and-data-uncertainty-in-a" target="_blank" class="text-sm font-semibold border-b border-zinc-800 dark:border-zinc-400 pb-0.5 hover:text-zinc-400 transition-all">Paper</a>
@@ -162,9 +177,9 @@
             <button onclick="switchTab('journey')" class="text-xs font-bold text-blue-500 uppercase mb-10 tracking-widest hover:underline">← Back to Journey</button>
             <div class="space-y-16">
                 <div class="group">
-                    <img src="files/BigSur_DoubleExposure.JPG" class="w-full h-auto rounded-3xl mb-6 shadow-lg clickable-img" onclick="openLightbox(this)">
+                    <img src="files/BigSur_DoubleExposure.JPG" alt="The Shape of Light" class="w-full h-auto rounded-3xl mb-6 shadow-lg clickable-img" onclick="openLightbox(this)">
                     <h4 class="text-sm font-medium">In the nowhere we saw light, Big Sur, California</h4>
-                    <p class="text-xs text-zinc-400 mt-1 uppercase">Sony A7 IV · 35mm f/1.4 · Nov 2023</p>
+                    <p class="text-xs text-zinc-400 mt-1 uppercase tracking-widest font-light">Sony A7 IV · 35mm f/1.4 · Nov 2023</p>
                 </div>
             </div>
         </div>
@@ -180,7 +195,7 @@
     </main>
 
     <script>
-        // Tab Management
+        // Tab switching [cite: 4]
         function switchTab(id) {
             document.querySelectorAll('.view-container').forEach(v => v.classList.add('hidden'));
             document.getElementById(`view-${id}`).classList.remove('hidden');
@@ -189,7 +204,7 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Swipe & Mouse Drag Logic
+        // Gesture & Mouse Drag 
         let isDown = false; let startX; let scrollTarget = null;
         document.addEventListener('touchstart', e => { startX = e.changedTouches[0].screenX; scrollTarget = e.target.closest('[data-swipe-target]'); }, false);
         document.addEventListener('touchend', e => { if (!scrollTarget) return; if (startX - e.changedTouches[0].screenX > 80) switchTab(scrollTarget.getAttribute('data-swipe-target')); }, false);
@@ -197,13 +212,17 @@
         document.addEventListener('mouseup', e => { if (!isDown || !scrollTarget) return; isDown = false; if (startX - e.pageX > 100) switchTab(scrollTarget.getAttribute('data-swipe-target')); });
         document.addEventListener('mouseleave', () => { isDown = false; });
 
-        // Theme & Lightbox
+        // Theme Toggle [cite: 3]
         const themeToggle = document.getElementById('theme-toggle');
         const html = document.documentElement;
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) html.classList.add('dark');
         themeToggle.addEventListener('click', () => { html.classList.toggle('dark'); localStorage.theme = html.classList.contains('dark') ? 'dark' : 'light'; });
+
+        // Lightbox [cite: 10]
         function openLightbox(el) { document.getElementById('lightbox-img').src = el.src; document.getElementById('lightbox').classList.remove('hidden'); document.getElementById('lightbox').classList.add('flex'); document.body.style.overflow = 'hidden'; }
         document.getElementById('lightbox').onclick = () => { document.getElementById('lightbox').classList.add('hidden'); document.body.style.overflow = 'auto'; };
+
+        // BibTeX Copy [cite: 18, 23]
         function copyBibTeX(btn) { navigator.clipboard.writeText(btn.getAttribute('data-bibtex')).then(() => { const old = btn.innerHTML; btn.innerHTML = "SUCCESS!"; setTimeout(() => btn.innerHTML = old, 2000); }); }
     </script>
 </body>
