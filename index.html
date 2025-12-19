@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shulin Cao | 人生旅程</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #fafafa; color: #1a1a1a; }
+        .timeline-line { width: 1px; background: linear-gradient(to bottom, #e5e7eb 0%, #e5e7eb 100%); }
+        .card-hover { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.05); }
+    </style>
+</head>
+<body class="selection:bg-blue-100">
+
+    <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50">
+        <div class="bg-white/80 backdrop-blur-md border border-zinc-200 px-6 py-3 rounded-full flex gap-8 text-sm font-medium shadow-sm">
+            <a href="#" class="hover:text-blue-600 transition-colors">Journey</a>
+            <a href="#" class="hover:text-blue-600 transition-colors">Research</a>
+            <a href="#" class="hover:text-blue-600 transition-colors">Photography</a>
+            <a href="#" class="hover:text-blue-600 transition-colors">Writing</a>
+        </div>
+    </nav>
+
+    <main class="max-w-3xl mx-auto pt-32 pb-24 px-6">
+        
+        <header class="mb-24">
+            <h1 class="text-4xl font-bold tracking-tight mb-4">Shulin Cao</h1>
+            <p class="text-lg text-zinc-500 leading-relaxed max-w-xl">
+                CV Researcher, Photographer, and Digital Explorer. 
+                目前致力于计算机视觉研究，探索光影与算法的交汇点。
+            </p>
+        </header>
+
+        <div class="relative">
+            <div class="absolute left-0 top-2 bottom-0 timeline-line ml-[6px]"></div>
+
+            <section class="mb-20 relative pl-10">
+                <div class="absolute left-0 top-1.5 w-3.5 h-3.5 rounded-full bg-white border-2 border-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.5)]"></div>
+                <h2 class="text-sm font-bold text-zinc-400 uppercase tracking-widest mb-8">2024 / Present</h2>
+
+                <div class="card-hover bg-white border border-zinc-100 p-8 rounded-3xl mb-8">
+                    <div class="flex items-start justify-between mb-4">
+                        <span class="text-xs font-medium px-2.5 py-1 bg-blue-50 text-blue-600 rounded-full">Research</span>
+                        <span class="text-xs text-zinc-400 italic">CVPR 2024</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 hover:text-blue-600 cursor-pointer">Human-Object Interaction in Dynamic Scenes</h3>
+                    <p class="text-zinc-600 leading-relaxed mb-6">
+                        这项研究探讨了在复杂动态环境下，如何通过时空注意力机制更精准地捕捉人机交互特征。
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="text-sm font-semibold border-b border-zinc-800 pb-0.5 hover:text-zinc-500 hover:border-zinc-300 transition-all">Paper</a>
+                        <a href="#" class="text-sm font-semibold border-b border-zinc-800 pb-0.5 hover:text-zinc-500 hover:border-zinc-300 transition-all">Interactive Demo</a>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer">
+                    <div class="overflow-hidden rounded-3xl bg-zinc-100 mb-4">
+                        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80" 
+                             alt="Landscape" 
+                             class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <div class="pl-2">
+                        <h4 class="text-sm font-medium">荒野之眼, Iceland</h4>
+                        <p class="text-xs text-zinc-400 mt-1">Sony A7RIV · 24-70mm f/2.8</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-20 relative pl-10">
+                <div class="absolute left-0 top-1.5 w-3.5 h-3.5 rounded-full bg-zinc-200 border-2 border-white"></div>
+                <h2 class="text-sm font-bold text-zinc-400 uppercase tracking-widest mb-8">2023</h2>
+                
+                <div class="card-hover bg-white border border-zinc-100 p-8 rounded-3xl">
+                    <div class="flex items-start justify-between mb-4">
+                        <span class="text-xs font-medium px-2.5 py-1 bg-zinc-100 text-zinc-600 rounded-full">Project</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 italic">Computational Photography Toolkit</h3>
+                    <p class="text-zinc-600 leading-relaxed">
+                        一个为摄影师开发的开源工具包，用于自动化处理 RAW 文件中的色彩一致性。
+                    </p>
+                </div>
+            </section>
+        </div>
+
+        <footer class="mt-32 pt-12 border-t border-zinc-100 flex justify-between items-center text-zinc-400 text-sm">
+            <p>© 2024 Shulin Cao</p>
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-zinc-800">Twitter</a>
+                <a href="#" class="hover:text-zinc-800">GitHub</a>
+            </div>
+        </footer>
+    </main>
+
+</body>
+</html>
