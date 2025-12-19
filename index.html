@@ -38,17 +38,22 @@
 
     <div id="landing-page" class="fixed inset-0 z-[200] flex flex-col items-center justify-center bg-black overflow-hidden text-center">
         <img src="files/main3.jpg" alt="Background" class="absolute inset-0 w-full h-full object-cover opacity-60">
-        
-        <div class="relative z-10 flex flex-col items-center px-8 max-w-2xl">
-            <h1 class="text-white text-5xl md:text-7xl font-bold tracking-tighter mb-6 w-full">
+        <div class="relative z-10 flex flex-col items-center justify-center w-full px-6 md:px-12">
+            <h1 class="text-white text-5xl md:text-7xl font-bold tracking-tighter mb-8 text-center select-none">
                 Shulin Cao
             </h1>
-            <p class="text-zinc-200 text-base md:text-xl font-light italic leading-relaxed mb-16 whitespace-normal md:whitespace-nowrap mx-auto">
+            <p class="text-zinc-200 text-base md:text-xl font-light italic leading-relaxed mb-20 
+                      max-w-[85vw] md:max-w-none mx-auto text-center
+                      whitespace-normal md:whitespace-nowrap break-words overflow-visible">
                 "In the pursuit of light, we often find ourselves in the most beautiful shadows."
             </p>
-            <div class="flex flex-col items-center gap-4 animate-hint cursor-pointer" onclick="enterSite()">
-                <p class="text-white/60 text-[10px] uppercase tracking-[0.4em] font-medium">Swipe Up or Scroll to Explore</p>
-                <div class="w-[1px] h-12 bg-gradient-to-b from-white/60 to-transparent"></div>
+            <div class="flex flex-col items-center gap-6 animate-hint cursor-pointer" onclick="enterSite()">
+                <p class="text-white/50 text-[10px] uppercase tracking-[0.5em] font-semibold text-center">
+                    Swipe Up or Scroll to Explore
+                </p>
+                <div class="relative w-[1px] h-14 bg-gradient-to-b from-white/40 to-transparent overflow-hidden">
+                    <div class="absolute inset-0 bg-blue-500/80 scroll-indicator"></div>
+                </div>
             </div>
         </div>
     </div>
